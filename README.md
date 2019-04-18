@@ -7,7 +7,7 @@ Wrap a given C++ API to Python API based on Cython and libclang.
 - Python 2.7 32-bit
 
 ## Download
-Download Clang 3.7 from [here](http://releases.llvm.org/download.html) and put libclang.dll to the root directory.
+Download Clang 3.7 from [here](http://releases.llvm.org/download.html) and put `libclang.dll` to the root directory.
 
 ## Install Python Packages
 ```bash
