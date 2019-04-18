@@ -15,5 +15,19 @@ pip install Cython clang==3.7
 ```
 
 ## Prepare C++ Files
-Put all `.h` files to `.include`, and put all `.lib` files to `.lib/`.
+Put all `.h` files to `.include/`, and put all `.lib` files to `.lib/`.
+
+## Generate Cython Codes
+do:
+```bash
+python C2py.py --head_path='$the path of your target head file$'
+```
+This will generate two Cython files: `.pxd` and `.pyx`.
+
+## Build Python Extension
+Make some necessary modifications in setup.py (`libraries` and the name of `.pyx` file). Then run:
+```bash
+python setup.py build_ext --compiler=msvc --inplace --plat-name=win32
+```
+This will generate Python extension `.pyd`. Don't forget to put `.dll` to the same path of `.pyd` when using the generated Python API.
 
