@@ -1,7 +1,7 @@
 #include <windows.h>
 #include <iostream>
-#include "include_agora/IAgoraRtcEngine.h"
-#include "include_agora/IAgoraService.h"
+#include "include/IAgoraRtcEngine.h"
+#include "include/IAgoraService.h"
 
 agora::rtc::IRtcEngine *createAgoraRtcEngine_t() {
     HMODULE h = LoadLibraryA("agora_rtc_sdk.dll");
