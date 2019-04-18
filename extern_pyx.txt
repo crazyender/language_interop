@@ -1,0 +1,12 @@
+def createAgoraRtcEngine():
+	tmp = py_IRtcEngine()
+	tmp.c_IRtcEngine = createAgoraRtcEngine_t()
+	return tmp
+def getAgoraSdkErrorDescription(int x1):
+	return getAgoraSdkErrorDescription_t(x1)
+def getAgoraSdkVersion(int x1):
+	return getAgoraSdkVersion_t(&x1)
+def createAgoraService():
+	tmp = py_IAgoraService()
+	tmp.c_IAgoraService = createAgoraService_t()
+	return tmp

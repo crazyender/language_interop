@@ -1,0 +1,5 @@
+cdef extern from "utility.cpp":
+	IRtcEngine *createAgoraRtcEngine_t()
+	char *getAgoraSdkErrorDescription_t(int x1)
+	char *getAgoraSdkVersion_t(int* x1)
+	IAgoraService *createAgoraService_t()
