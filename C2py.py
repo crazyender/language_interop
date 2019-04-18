@@ -497,8 +497,10 @@ if __name__ == '__main__':
     Config.set_library_path('.')
     Config.set_library_file('libclang.dll')
     parse = argparse.ArgumentParser()
-    parse.add_argument('--head_path', default='include/IAgoraRtcEngine', type=str, help='path for the head file')
+    parse.add_argument('--head_path', default='include/IAgoraRtcEngine.h', type=str, help='path for the head file')
     args = parse.parse_args()
+    args.head_path = ''.join(args.head_path.split('.')[:-1])
     cython = cythonGenerator(args.head_path)
     cython.generate()
+
 
