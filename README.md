@@ -15,7 +15,7 @@ pip install Cython clang==3.7
 ```
 
 ## Prepare C++ Files
-Put all `.h` files to `.include/`, and put all `.lib` files to `.lib/`.
+Put all `.h` files to `include/`, and put all `.lib` files to `lib/`.
 
 ## Generate Cython Codes
 do:
