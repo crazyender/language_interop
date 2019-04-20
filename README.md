@@ -34,3 +34,8 @@ python setup.py build_ext --compiler=msvc --inplace --plat-name=win32
 ```
 This will generate Python extension `.pyd`. Don't forget to put `.dll` files to the same path of `.pyd` file when using the generated Python API.
 
+## Limitations
+- No support for template class declarations.
+- No support for pointer to pointer other than `void**`
+- No support for arrays other than `const char [n]`
+
