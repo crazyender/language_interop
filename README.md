@@ -36,6 +36,6 @@ This will generate Python extension `.pyd`. Don't forget to put `.dll` files to 
 
 ## Limitations
 - No support for template class declarations.
-- No support for pointer to pointer other than `void**`
-- No support for arrays other than `const char [n]`
+- No support for pointer to pointer other than `void**`.
+- No support for arrays other than `const char [n]`.
 
