@@ -20,9 +20,12 @@ Put all `.h` files to `include/`, and put all `.lib` files to `lib/`.
 ## Generate Cython Codes
 do:
 ```bash
-python C2py.py --head_path='$the path of your target head file$'
+python C2py.py --head_path='$the path of your target head file$' --extern_pxd='' --extern_pyx=''
 ```
-This will generate two Cython files: `.pxd` and `.pyx`.
+This will generate two Cython files: `.pxd` and `.pyx`. Note that if you have C functions imported from `.dll`, you have to firstly delete the C function declarations in the head files and then write some necessary codes in `utility.cpp`, `extern_pxd.txt`, and `extern_pyx.txt`. You can refer to examples about how to write these files in this project. After this, do:
+```bash
+python C2py.py --head_path='$the path of your target head file$' --extern_pxd='extern_pxd.txt' --extern_pyx='extern_pyx.txt'
+```
 
 ## Build Python Extension
 Make some necessary modifications in `setup.py` (the names of libraries and the name of `.pyx` file). Then run:
