@@ -18,7 +18,7 @@ Firstly, to generate Cython codes from `IAgoraRtcEngine.h`, run
 ```bash
 python C2py.py --head_path='include/IAgoraRtcEngine.h' --callback_wrapper='EventHandlerWrapper.h' --target_file_name='IAgoraRtcEngine'  --mode='new'
 ```
-Then, to add Cython codes from 'IAgoraMediaEngine.h`, run
+Then, to add Cython codes from `IAgoraMediaEngine.h`, run
 ```bash
 python C2py.py --head_path='include/IAgoraMediaEngine.h' --callback_wrapper='VideoFrameObserverWrapper.h' --target_file_name='IAgoraRtcEngine'  --mode='add'  --extern_pxd='extern_pxd.txt'  --extern_pyx='extern_pyx.txt'
 ```
