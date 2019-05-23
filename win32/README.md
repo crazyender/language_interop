@@ -1,4 +1,4 @@
-# Convert Agora C++ API to Python API in Win32
+# Convert Agora C++ API to Python API on Win32
 Wrap Agora C++ API to Python API based on Cython and libclang on Win32 platform.
 
 ## Requirements
