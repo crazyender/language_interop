@@ -444,15 +444,6 @@ class cythonGenerator:
                     self.writePyx(type + ' x%d' % paramCount)
                     tmpCode += 'x%d' % paramCount
                     self.writePxd(type + ' x%d' % paramCount)
-                '''
-                if c.type.kind not in [TypeKind.ENUM, TypeKind.RECORD, TypeKind.LVALUEREFERENCE, TypeKind.TYPEDEF, TypeKind.POINTER, TypeKind.CONSTANTARRAY]\
-                    and len(list(c.get_children())) != 0:
-                    default = str(list(list(c.get_children())[0].get_tokens())[0].spelling)
-                    self.writePxd(' = ' + default)
-                    if default == 'false': default = '0'
-                    if default == 'true': default = '1'
-                    self.writePyx(' = ' + default)
-                '''
         return tmpCode + ')'
 
     def classDefinition(self, template=None):
@@ -548,7 +539,7 @@ class cythonGenerator:
 
 if __name__ == '__main__':
     Config.set_library_path('.')
-    Config.set_library_file('libclang.dll')
+    Config.set_library_file('libclang.dylib')
     parse = argparse.ArgumentParser()
     parse.add_argument('--head_path', default='include/IAgoraMediaEngine.h', type=str, help='path for the head file')
     parse.add_argument('--extern_pxd', default='extern_pxd.txt', type=str, help='external pxd code')
