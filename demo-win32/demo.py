@@ -10,10 +10,12 @@ from PyQt5.QtWidgets import QApplication
 from PyQt5.QtCore import QThread, pyqtSignal
 from callBack import EventHandlerData
 
+appId = b"466c2ed3224c4e42996f7e08d2bb7193"
+
 Engine = IAgoraRtcEngine.pycreateAgoraRtcEngine()
 ctx = IAgoraRtcEngine.pyRtcEngineContext()
 ctx.eventHandler = IAgoraRtcEngine.pyEventHandler()
-ctx.appId = b"466c2ed3224c4e42996f7e08d2bb7193"
+ctx.appId = appId
 Engine.initialize(ctx)
 EngineParam = IAgoraRtcEngine.pyRtcEngineParameters()
 
@@ -24,7 +26,7 @@ class joinChannelThread(QThread):
         self.remoteWinId = -1
         self.channel = ""
     def run(self):
-        Engine.joinChannel(b"466c2ed3224c4e42996f7e08d2bb7193", self.channel, b"hello", 0)
+        Engine.joinChannel(appId, self.channel, b"", 0)
         while (EventHandlerData.localUid == -1): pass
         LocalCanvas = IAgoraRtcEngine.pyVideoCanvas()
         LocalCanvas.construct_2(self.localWinId,
