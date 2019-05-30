@@ -22,11 +22,11 @@ Then, to add Cython codes from `IAgoraMediaEngine.h`, run
 ```bash
 python C2py.py --head_path='include/IAgoraMediaEngine.h' --callback_wrapper='VideoFrameObserverWrapper.h' --target_file_name='IAgoraRtcEngine'  --mode='add'  --extern_pxd='extern_pxd.txt'  --extern_pyx='extern_pyx.txt'
 ```
-At this stage, the Cython codes can be compiled successfully. However, to make the extension work perfectly for Agora API, some neccessary modifications should be made based on `modify.txt`. There are still some other trivial changes needed, please consult the author of this project.
+After running the above two commands, two files are generated: `IAgoraRtcEngine.pxd` and `IAgoraRtcEngine_pyx.pyx`. At this stage, the Cython codes can be compiled successfully. However, to make the extension work perfectly for Agora API, some neccessary modifications should be made based on `modify.txt`. There are still some other trivial changes needed, please consult the author of this project. The `IAgoraRtcEngine.pxd` and `IAgoraRtcEngine_pyx.pyx` files which have been modified are provided here.
 
 ## Build Python Extension
 Run:
 ```bash
 python setup.py build_ext  --inplace 
 ```
-This will generate Python extension `.pyd`. Don't forget to put `.dll` files to the same path of `.pyd` file when using the generated Python API.
+This will generate Python extension `.so`. Don't forget to put `.dll` files to the same path of `.so` file when using the generated Python API.
