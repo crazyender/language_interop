@@ -10,7 +10,7 @@ from PyQt5.QtWidgets import QApplication
 from PyQt5.QtCore import QThread, pyqtSignal
 from callBack import EventHandlerData
 
-appId = b"466c2ed3224c4e42996f7e08d2bb7193"
+appId = b""
 
 Engine = IAgoraRtcEngine.pycreateAgoraRtcEngine()
 ctx = IAgoraRtcEngine.pyRtcEngineContext()

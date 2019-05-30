@@ -1,13 +1,21 @@
 # -*- coding: utf-8 -*-
 import IAgoraRtcEngine
+import ctypes
+import os
+import numpy as np
+from PIL import Image
+import cv2
 
 class CallBackData:
     def __init__(self):
         self.localUid = -1
         self.remoteUid = -1
+        self.rawDataCounter = 0
         self.joinChannelSuccess = False
 
 EventHandlerData = CallBackData()
+if not os.path.exists("./rawData"):
+    os.mkdir("./rawData")
 
 class EventHandler:
     @staticmethod
@@ -143,10 +151,22 @@ class VideoFrameObserver:
     def onCaptureVideoFrame(width, height, yStride,
 			uStride, vStride, yBuffer, uBuffer, vBuffer,
 			rotation, renderTimeMs, avsync_type):
-        pass
+        y_array = (ctypes.c_uint8 * (width*height)).from_address(yBuffer)
+        u_array = (ctypes.c_uint8 * ((width//2)*(height//2))).from_address(uBuffer)
+        v_array = (ctypes.c_uint8 * ((width//2)*(height//2))).from_address(vBuffer)
+
+        Y = np.frombuffer(y_array, dtype=np.uint8).reshape(height, width)
+        U = np.frombuffer(u_array, dtype=np.uint8).reshape((height//2, width//2)).repeat(2, axis=0).repeat(2, axis=1)
+        V = np.frombuffer(v_array, dtype=np.uint8).reshape((height//2, width//2)).repeat(2, axis=0).repeat(2, axis=1)
+        YUV = np.dstack((Y, U, V))[:height, :width, :]
+        
+        RGB = cv2.cvtColor(YUV, cv2.COLOR_YUV2RGB, 3)
+        im = Image.fromarray(RGB)
+        EventHandlerData.rawDataCounter += 1
+        im.save("rawData/sample%d.jpeg"%EventHandlerData.rawDataCounter)
 
     @staticmethod
     def onRenderVideoFrame(uid, width, height, yStride,
                             uStride, vStride, yBuffer, uBuffer, vBuffer,
                             rotation, renderTimeMs, avsync_type):
-        print(uid)
+        pass

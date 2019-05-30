@@ -29,4 +29,4 @@ Run:
 ```bash
 python setup.py build_ext  --inplace 
 ```
-This will generate Python extension `.so`. Don't forget to put `.dll` files to the same path of `.so` file when using the generated Python API.
+This will generate Python extension `.so`. 
